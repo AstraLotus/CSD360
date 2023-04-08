@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dice Roller</title>
+  <meta charset="UTF-8">
+<style>
+      body {
+        background-color: #ffe4c4;
+      }
+      h1 {
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 36px;
+        color: #FF69B4;
+      }
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 10px;
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 18px;
+        color: #6495ED;
+        background-color: #FFC0CB;
+        border: 1px solid #FF69B4;
+      }
+      input[type="button"] {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 18px;
+        color: #FF69B4;
+        background-color: #6495ED;
+        border: 1px solid #FF69B4;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      input[type="text"] {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 18px;
+        color: #FF69B4;
+        background-color: #FFC0CB;
+        border: 1px solid #FF69B4;
+        border-radius: 5px;
+        padding: 5px;
+        text-align: center;
+      }
+      input[name="button5"] {
+        display: block;
+        margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+  <h1>Dice Roller</h1>
+  <script type="text/javascript">
+    function rollDice() {
+      document.form1.dice1.value = Math.floor((Math.random() * 6) + 1);
+      document.form1.dice2.value = Math.floor((Math.random() * 6) + 1);
+      document.form1.total.value = parseInt(document.form1.dice1.value) + parseInt(document.form1.dice2.value);
+      var total = parseInt(document.form1.dice1.value) + parseInt(document.form1.dice2.value);
+      switch(total) {
+        case 2:
+          document.form1.total.value = "Snake Eyes";
+          break;
+        case 12:
+          document.form1.total.value = "Box Cars";
+          break;
+        case 7:
+        case 11:
+          document.form1.total.value = "You Win";
+          break;
+        default:
+          document.form1.total.value = total;
+          break;
+      }
+    }
+    function reset() {
+      document.form1.dice1.value = "";
+      document.form1.dice2.value = "";
+      document.form1.total.value = "";
+    }
+  </script>
+  <form name="form1">
+    <table>
+      <tr>
+        <td> Dice 1 </td>
+        <td> <input type="text" name="dice1" /> </td>
+        <td> Dice 2 </td>
+        <td> <input type="text" name="dice2" /> </td>
+        <td> <input type="button" name="button1" onclick="rollDice()" value=" Roll Dice " /> </td>
+        <td> Total </td>
+        <td> <input type="text" name="total" /> </td>
+      </tr>
+    </table>
+    <input id="resetBtn" type="button" name="button5" value="Reset" onclick="reset()" />
+  </form>
+</body>
+</html>
